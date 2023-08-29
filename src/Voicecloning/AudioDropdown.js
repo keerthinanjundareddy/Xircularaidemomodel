@@ -106,11 +106,11 @@ const AudioDropdown = () => {
         {showVoiceClonedSection && (
          <div className='voice-cloned-section'>
          <div className='voice-parent-div'>
-           <div>Voice getting cloned</div>
-           <div style={{ width: "100%", height: "200px", textAlign: "center" }}>
+           <div style={{ textAlign: "center" }}>
              {showVoiceClonedSection ? (
-               <div className="spinner">
+               <div className="loading-spinner">
                  <div className="loader"></div>
+                 <div className="loading-text">Loading...</div>
                </div>
              ) : (
                <img src={soundwavetwo} alt="voice-pitch" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
