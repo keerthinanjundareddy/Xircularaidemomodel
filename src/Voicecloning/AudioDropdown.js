@@ -1,9 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import staticAudio from './Audios/audiokushi.mp3';
-import staticAudiotwo from './Audios/audioaradhya.mp3';
 import './AudioDropdown.css';
-import voicepitch from '../Assets/clonedimage.jpg';
-import soundwaveone from '../Assets/soundwavethree.png';
 import soundwavetwo from '../Assets/soundwavefour.jpg';
 import ReactSelect from 'react-select';
 import Select from 'react-select';
@@ -11,8 +8,8 @@ import Select from 'react-select';
 const AudioDropdown = () => {
   const [selectedAudio, setSelectedAudio] = useState(null);
   const [isOptionSelected, setIsOptionSelected] = useState(false);
-  const [showVoiceClonedSection, setShowVoiceClonedSection] = useState(false); // State to control the visibility of the "Voice getting cloned" section
-  const [showOutputSection, setShowOutputSection] = useState(false); // State to control the visibility of the output section
+  const [showVoiceClonedSection, setShowVoiceClonedSection] = useState(false);
+  const [showOutputSection, setShowOutputSection] = useState(false);
   const inputAudioRef = useRef(null);
   const outputAudioRef = useRef(null);
 
@@ -32,34 +29,27 @@ const AudioDropdown = () => {
     setIsOptionSelected(true);
   };
 
-  const handleOutputAudioClick = () => {
-    if (inputAudioRef.current) {
-      inputAudioRef.current.pause();
-    }
-  };
-
   useEffect(() => {
     if (isOptionSelected) {
-      // After 2 seconds, show the "Voice getting cloned" section
       const voiceCloneTimeout = setTimeout(() => {
-        setShowVoiceClonedSection(true);
-      }, 2000); // 2000 milliseconds = 2 seconds
+        setShowVoiceClonedSection(true); // Show the voice cloned section after 2 seconds
+      }, 2000);
 
-      // Clear the timeout if a new option is selected before the timeout completes
-      return () => clearTimeout(voiceCloneTimeout);
-    } else {
-      setShowVoiceClonedSection(false);
+      return () => {
+        clearTimeout(voiceCloneTimeout);
+      };
     }
   }, [isOptionSelected]);
 
   useEffect(() => {
     if (showVoiceClonedSection) {
-      // After 2 seconds of showing the "Voice getting cloned" section, show the output section
+      // After 2 seconds of showing the voice cloned section, display the output section
       const outputTimeout = setTimeout(() => {
+        setShowVoiceClonedSection(false);
         setShowOutputSection(true);
-      }, 4000); // 2000 milliseconds = 2 seconds
-    } else {
-      setShowOutputSection(false);
+      }, 5000);
+
+      return () => clearTimeout(outputTimeout);
     }
   }, [showVoiceClonedSection]);
 
@@ -80,44 +70,54 @@ const AudioDropdown = () => {
     <>
       <div style={{ textAlign: "center", textTransform: "uppercase" }}>Voice cloning</div>
       <div className='flex-box-container'>
-        <div className={`input-section ${isOptionSelected ? 'expanded' : ''}`}>
-          <div style={{ textTransform: "uppercase" }}>Input section</div>
-          <div className='input-flexbox-container'>
-            <div className='input-inside-section'>
-              <label htmlFor="audioSelect">Select an audio:</label>
-              <Select options={options} styles={customStyles} onChange={handleAudioChange}  />
-            </div>
-            <div>
-              {selectedAudio && (
-                <audio
-                  controls
-                  src={selectedAudio}
-                  ref={inputAudioRef}
-                />
-              )}
+        {showOutputSection ? (
+          // Render the output section when showOutputSection is true
+          <div className='output-section'>
+            <div style={{ textTransform: "uppercase" }}>Output section</div>
+            <div className='output-section-flexbox-container'>
+              <div>Words cloned into arigit singh voice</div>
+              <div>
+                <audio controls src={staticAudio} ref={outputAudioRef} />
+              </div>
             </div>
           </div>
-        </div>
-        {showVoiceClonedSection && (
-          <div className='voice-cloned-section'>
-            <div className='voice-parent-div'>
-              <div>Voice getting cloned</div>
-              <div style={{ width: "100%", height: "200px", textAlign: "center" }}>
-                <img src={soundwavetwo} alt="voice-pitch" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+        ) : (
+          // Render the input section when showOutputSection is false
+          <div className={`input-section ${isOptionSelected ? 'expanded' : ''}`}>
+            <div style={{ textTransform: "uppercase" }}>Input section</div>
+            <div className='input-flexbox-container'>
+              <div className='input-inside-section'>
+                <label htmlFor="audioSelect">Select an audio:</label>
+                <Select options={options} styles={customStyles} onChange={handleAudioChange} />
+              </div>
+              <div>
+                {selectedAudio && (
+                  <audio
+                    controls
+                    src={selectedAudio}
+                    ref={inputAudioRef}
+                  />
+                )}
               </div>
             </div>
           </div>
         )}
-        {showOutputSection && (
-          <div className='output-section'>
-            <div style={{ textTransform: "uppercase" }}>Output section</div>
-            <div className='output-section-flexbox-container'>
-              <div onClick={handleOutputAudioClick}>Words  cloned into arigit singh voice</div>
-              <div>
-                <audio controls src={staticAudiotwo} ref={outputAudioRef} />
-              </div>
-            </div>
-          </div>
+        {/* Conditionally render the voice cloned section based on showVoiceClonedSection */}
+        {showVoiceClonedSection && (
+         <div className='voice-cloned-section'>
+         <div className='voice-parent-div'>
+           <div>Voice getting cloned</div>
+           <div style={{ width: "100%", height: "200px", textAlign: "center" }}>
+             {showVoiceClonedSection ? (
+               <div className="spinner">
+                 <div className="loader"></div>
+               </div>
+             ) : (
+               <img src={soundwavetwo} alt="voice-pitch" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+             )}
+           </div>
+         </div>
+       </div>
         )}
       </div>
     </>
