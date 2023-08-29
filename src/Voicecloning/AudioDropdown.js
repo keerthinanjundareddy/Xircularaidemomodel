@@ -47,7 +47,7 @@ const AudioDropdown = () => {
       const outputTimeout = setTimeout(() => {
         setShowVoiceClonedSection(false);
         setShowOutputSection(true);
-      }, 5000);
+      }, 6000);
 
       return () => clearTimeout(outputTimeout);
     }
@@ -109,7 +109,8 @@ const AudioDropdown = () => {
            <div style={{ textAlign: "center" }}>
              {showVoiceClonedSection ? (
                <div className="loading-spinner">
-                 <div className="loader"></div>
+                <div style={{color:"#007bff"}}>Audio getting cloned</div>
+                 <div className="loader" style={{marginTop:"10px"}}></div>
                  <div className="loading-text">Loading...</div>
                </div>
              ) : (
