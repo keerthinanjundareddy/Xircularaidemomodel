@@ -4,6 +4,7 @@ import staticAudiotwo from './Audios/Maroon_5_-_Memories_(Lyrics)(128k).m4a'
 import './AudioDropdown.css';
 import soundwavetwo from '../Assets/soundwavefour.jpg';
 import Select from 'react-select';
+import input from '../Assets/noise-icon 1 (1).png'
 
 const AudioDropdown = () => {
   const [selectedAudio, setSelectedAudio] = useState(null);
@@ -62,6 +63,7 @@ const AudioDropdown = () => {
       ...provided,
       backgroundColor: state.isSelected ? 'red' : 'white',
       color: state.isSelected ? 'white' : 'red',
+      
       fontSize: '16px',
     }),
   };
@@ -69,15 +71,17 @@ const AudioDropdown = () => {
   return (
     <>
     <div >
-      <div style={{ textAlign: "center", textTransform: "uppercase" }}>Voice cloning</div>
+      <div style={{ textAlign: "center", textTransform: "uppercase" ,marginTop:"20px"}}>Voice cloning</div>
       <div className='flex-box-container'>
         {/* Always render the input section */}
         <div className={`input-section ${isOptionSelected ? 'expanded' : ''}`}>
           <div style={{ textTransform: "uppercase" }}>Input section</div>
+         
+          <div style={{width:"100%",height:"110px",textAlign:"center",justifyContent:"center",alignItems:"center",}}><img src={input} alt="voice-icon"  style={{width:"100%",height:"100%",objectFit:"contain"}} /></div>
           <div className='input-flexbox-container'>
             <div className='input-inside-section'>
               <label htmlFor="audioSelect">Select an audio:</label>
-              <Select options={options} styles={customStyles} onChange={handleAudioChange} />
+              <Select options={options} styles={customStyles} onChange={handleAudioChange}  className="custom-select"  />
             </div>
             <div>
               {selectedAudio && (
@@ -85,6 +89,12 @@ const AudioDropdown = () => {
                   controls
                   src={selectedAudio}
                   ref={inputAudioRef}
+                  style={{
+                    /* Your CSS styles here */
+                    width: '100%', // Example: Make the audio player 100% width
+                    height: '40px', // Example: Set a specific height
+                    // Add any other styles as needed
+                  }}
                 />
               )}
             </div>
@@ -95,10 +105,17 @@ const AudioDropdown = () => {
           // Render the output section when showOutputSection is true
           <div className='output-section'>
             <div style={{ textTransform: "uppercase" }}>Output section</div>
+            <div style={{width:"100%",height:"110px",textAlign:"center",justifyContent:"center",alignItems:"center",}}><img src={input} alt="voice-icon"  style={{width:"100%",height:"100%",objectFit:"contain"}} /></div>
             <div className='output-section-flexbox-container'>
               <div>Words cloned into arigit singh voice</div>
               <div>
-                <audio controls src={staticAudiotwo} ref={outputAudioRef} />
+                <audio controls src={staticAudiotwo} ref={outputAudioRef} 
+                 style={{
+                  /* Your CSS styles here */
+                  width: '100%', // Example: Make the audio player 100% width
+                  height: '40px', // Example: Set a specific height
+                  // Add any other styles as needed
+                }}/>
               </div>
             </div>
           </div>
