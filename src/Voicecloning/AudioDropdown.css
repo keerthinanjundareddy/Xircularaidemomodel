@@ -4,64 +4,51 @@
     box-sizing: border-box;
 }
 body{
-  width:100%;
-  height:100vh;
-  background-color: rgb(250, 245, 245);
+  background-color: rgb(247, 246, 246) !important;
 }
 .flex-box-container{
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 10px;
-    margin-top: 40px;
-    gap:20px;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+
+  width:100%;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  gap:30px;
+
 }
 .input-section{
-    border:1px solid white;
-  
-    border-radius: 10px;
-    /* height: 500px; */
-    padding-right: 20px;
-    padding-left: 20px;
-    /* flex-basis:40% ; */
-    flex-basis: 100%;
-    /* padding-bottom: 50px; */
-    padding-top: 5px;
-    margin-left: 35%;
-    margin-right: 35%;
-    background-color: white;
-  
+  border:1px solid white;
+  flex-basis: 30%;
+
+ padding-left:20px ;
+ padding-right:20px ;
+ padding-top:20px ;
+ padding-bottom:40px ;
+  text-align: center;
+  border-radius: 8px;
+  background-color: white;
+
     
 }
 .output-section{
-    border:1px solid white;
-    border-radius: 10px;
-    flex-basis: 100%;
-    /* height: 500px; */
-    /* padding: 20px; */
+  border:1px solid white;
+  flex-basis: 30%;
 
-    padding-right: 20px;
-    padding-left: 20px;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    /* flex-basis:40% ;  */
-    margin-left: 35%;
-    margin-right: 35%;
-    background-color: white;
+ padding:30px ;
+  text-align: center;
+  border-radius: 8px;
+  background-color: white;
 }
 .voice-cloned-section
 {
-    border:1px solid white;
-    border-radius: 10px;
-    flex-basis: 30%;
-    /* height: 500px; */
-    /* padding: 20px; */
-       padding:40px;
-    /* flex-basis:40% ;  */
-    margin-left: 35%;
-    margin-right: 35%;
-    background-color: white;
+  border:1px solid white;
+  flex-basis: 30%;
+
+ padding:30px ;
+  text-align: center;
+  border-radius: 8px;
+  background-color: white;
 }
 .voice-parent-div{
     display:flex;
@@ -154,6 +141,7 @@ select {
     color: red;
     font-size: 16px;
     width:20px !important;
+   
     
   }
   
@@ -163,42 +151,21 @@ select {
     color: red;
   }
   
-  .input-flexbox-container{
-    padding-bottom: 50px;
-   
-   } 
-   /* Add these styles to your CSS file */
-/* Add these styles to your CSS file */
-.loading-spinner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  text-align: center;
-}
-
+  /* CSS loader styles */
 .loader {
-  border: 8px solid #f3f3f3; /* Light gray border */
-  border-top: 8px solid #3498db; /* Blue border */
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #007bff;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   animation: spin 1s linear infinite;
-  margin-bottom: 10px;
+  margin: 0 auto;
+  padding-top: 30px;
 }
-
-.loading-text {
-  font-size: 18px;
-  font-weight: bold;
-  color: #3498db; /* Blue color */
+.loading-text{
+  color:#007bff;
+  padding-top: 10px;
 }
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
@@ -207,16 +174,13 @@ select {
 
   
 @media screen and (max-width: 600px) {
- 
 
     .flex-box-container{
         margin-top: 20px;
         display: flex;
         flex-direction: column;
-     gap:30px;
-   
+     gap:50px;
     }
-  
     .input-section audio,
     .output-section audio {
       width: 100%; /* Adjust this width as needed */
@@ -242,20 +206,23 @@ select {
         max-height: 150px; 
         overflow-y: auto; /* Enable vertical scrolling if options exceed the max-height */
       }
-       .input-flexbox-container{
-       padding-bottom: 50px;
-      } 
+      .input-flexbox-container{
+       padding-bottom: 20px;
+      }
       .output-section{
         padding-bottom: 50px;
-        margin-left: 5%;
-        margin-right: 5%;
-      } 
+      }
+
       .input-section{
-        margin-left: 5%;
-        margin-right: 5%;
-      }
-      .voice-cloned-section{
-        margin-left: 5%;
-        margin-right: 5%;
-      }
+       margin-left: 20px;
+       margin-right:20px;
+      }   
+      .output-section{
+        margin-left: 20px;
+        margin-right:20px;
+       }  
+       .voice-cloned-section{
+        margin-left: 20px;
+        margin-right:20px;
+       }    
 }
