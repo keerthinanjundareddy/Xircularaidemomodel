@@ -48,7 +48,7 @@ const AudioDropdown = () => {
       const outputTimeout = setTimeout(() => {
         setShowVoiceClonedSection(false);
         setShowOutputSection(true);
-      }, 6000);
+      }, 4000);
 
       return () => clearTimeout(outputTimeout);
     }
@@ -71,11 +71,11 @@ const AudioDropdown = () => {
   return (
     <>
     <div >
-      <div style={{ textAlign: "center", textTransform: "uppercase" ,marginTop:"20px"}}>Voice cloning</div>
+      <div style={{ textAlign: "center", textTransform: "uppercase" ,marginTop:"20px"}}><b>Voice cloning</b></div>
       <div className='flex-box-container'>
         {/* Always render the input section */}
         <div className={`input-section ${isOptionSelected ? 'expanded' : ''}`}>
-          <div style={{ textTransform: "uppercase" }}>Input section</div>
+          <div style={{ textTransform: "uppercase" }}><b>Input section</b></div>
          
           <div style={{width:"100%",height:"110px",textAlign:"center",justifyContent:"center",alignItems:"center",}}><img src={input} alt="voice-icon"  style={{width:"100%",height:"100%",objectFit:"contain"}} /></div>
           <div className='input-flexbox-container'>
@@ -104,7 +104,7 @@ const AudioDropdown = () => {
         {showOutputSection && (
           // Render the output section when showOutputSection is true
           <div className='output-section'>
-            <div style={{ textTransform: "uppercase" }}>Output section</div>
+            <div style={{ textTransform: "uppercase" }}><b>Output section</b></div>
             <div style={{width:"100%",height:"110px",textAlign:"center",justifyContent:"center",alignItems:"center",}}><img src={input} alt="voice-icon"  style={{width:"100%",height:"100%",objectFit:"contain"}} /></div>
             <div className='output-section-flexbox-container'>
               <div>Words cloned into arigit singh voice</div>

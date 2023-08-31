@@ -177,6 +177,7 @@ select {
 
     .flex-box-container{
         margin-top: 20px;
+        margin-bottom: 20px;
         display: flex;
         flex-direction: column;
      gap:50px;
@@ -220,9 +221,13 @@ select {
       .output-section{
         margin-left: 20px;
         margin-right:20px;
+      
        }  
        .voice-cloned-section{
         margin-left: 20px;
         margin-right:20px;
        }    
+
+      
+
 }
